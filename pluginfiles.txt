@@ -1,0 +1,57 @@
+Plugin Files and Configuration
+
+Rojo Configuration Files:
+- plugin/default.project.json (Rojo config for building plugin)
+- development.project.json (Rojo config for development environment)
+
+Roblox Model Files:
+- plugin/src/UiLibrary/Assets.rbxm (precompiled UI assets)
+
+Plugin Source Files:
+- plugin/src/init.server.luau (main plugin entry point)
+- plugin/src/App/init.luau
+- plugin/src/App/ApiDump.luau
+- plugin/src/App/Connection.luau
+- plugin/src/App/GetFilterOptions.luau
+- plugin/src/App/Retry.luau
+- plugin/src/App/ReuploadIds.luau
+- plugin/src/App/StatusCodes.luau
+- plugin/src/App/WaitGroup.luau
+- plugin/src/App/AssetIdFilter/init.luau
+- plugin/src/App/AssetIdFilter/ChangeIds.luau
+- plugin/src/App/AssetIdFilter/GetAssetIds.luau
+- plugin/src/App/Tabs/Animation.luau
+- plugin/src/App/Tabs/Filter.luau
+- plugin/src/App/Tabs/Mesh.luau
+- plugin/src/App/Tabs/Replace.luau
+- plugin/src/App/Tabs/Settings.luau
+- plugin/src/App/Tabs/Sound.luau
+- plugin/src/UiLibrary/init.luau
+- plugin/src/UiLibrary/Theme.luau
+- plugin/src/UiLibrary/Tip.luau
+- plugin/src/UiLibrary/Tab/init.luau
+- plugin/src/UiLibrary/Tab/Button.luau
+- plugin/src/UiLibrary/Tab/Input.luau
+- plugin/src/UiLibrary/Tab/Label.luau
+- plugin/src/UiLibrary/Tab/Split.luau
+- plugin/src/UiLibrary/Tab/Toggle.luau
+- plugin/src/UiLibrary/Tab/List/init.luau
+- plugin/src/UiLibrary/Tab/List/ListElement.luau
+- plugin/Version.txt (version file referenced by Rojo config)
+
+Plugin Test Files:
+- plugin_tests/LocalScript.client.luau
+- plugin_tests/ModuleScript.luau
+- plugin_tests/Script.server.luau
+- plugin_tests/Animation.model.json
+- plugin_tests/CharacterMesh.model.json
+- plugin_tests/IntValue.model.json
+- plugin_tests/NumberValue.model.json
+- plugin_tests/SpecialMesh.model.json
+- plugin_tests/StringValue.txt
+
+Build Information:
+- Rojo is used as the build system (references in .project.json files)
+- No separate build.sh or build.bat script found; Rojo is invoked directly via CLI
+- Plugin builds from plugin/src directory specified in plugin/default.project.json
+- Development environment configured in development.project.json for testing
