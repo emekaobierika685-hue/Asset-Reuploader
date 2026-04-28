@@ -1,0 +1,14 @@
+Rate Limit Fix Summary
+
+1. internal/app/assets/animation/animation.go
+   - Changed upload queue from `taskqueue.New[int64](time.Minute, 3000)` to `taskqueue.New[int64](time.Second*2, 1)`.
+   - This enforces a 2-second interval between animation upload requests using the existing task queue rate limiting.
+
+2. internal/app/assets/sound/sound.go
+   - Changed upload queue from `taskqueue.New[int64](time.Minute, 120)` to `taskqueue.New[int64](time.Second*2, 1)`.
+   - This enforces a 2-second interval between sound upload requests using the existing task queue rate limiting.
+
+Result:
+- Animation and sound upload handlers now use the shared `fixedWindow` task queue scheduler to space uploads.
+- The change leverages existing retry and queue delay behavior rather than manual sleeps.
+- This should reduce the chance of Roblox 429 rate-limit errors during bulk uploads.

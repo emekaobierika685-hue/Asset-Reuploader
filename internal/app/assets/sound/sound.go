@@ -82,7 +82,7 @@ func Reupload(ctx *context.Context, r *request.Request) {
 	creatorPlaceMap := shardedmap.New[*atomicarray.AtomicArray[int64]]()
 	creatorMutexMap := shardedmap.New[*sync.RWMutex]()
 
-	uploadQueue := taskqueue.New[int64](time.Minute, 120)
+	uploadQueue := taskqueue.New[int64](time.Second*2, 1)
 	permissionQueue := taskqueue.New[*assets.PermissionResponse](time.Minute, 60)
 	permissionRequest := assetutils.NewPermissionBodyFromIds([]int64{r.UniverseID})
 
