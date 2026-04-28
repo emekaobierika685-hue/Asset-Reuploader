@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"strings"
 
-	"github.com/kartFr/Asset-Reuploader/internal/files"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/files"
 )
 
 var (

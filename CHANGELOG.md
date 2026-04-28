@@ -1,4 +1,4 @@
-# [1.4.1](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.4.1) - September 15th, 2025
+# [1.4.1](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.4.1) - September 15th, 2025
 - Got rid of atomic writing (very naive to put that in lmaooo)
 - (actually) Fixed mesh changing colors.
 - Fixed case in animations where if the owner had a place it wouldn't look at the place list. (oops)
@@ -9,19 +9,19 @@ We now HAVE to provide a place id with the animation, which in some cases is fin
 If its from a private game you guys will have to provide the ID under filter. 
 Keep in mind that asset permission is based off universe the universe. But the api itself is based off places, so you only have to provide 1 place from that universe.
 
-# [1.4.0](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.4.0) - August 6th, 2025
+# [1.4.0](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.4.0) - August 6th, 2025
 
-- Changed it so writing to files is now atomic. ([#58](https://github.com/kartFr/Asset-Reuploader/pull/58))
-- Fixed saving cookie for mac users. ([#27](https://github.com/kartFr/Asset-Reuploader/pull/27))
-- Fixed reupload filter not taking into account whether it was reuploading to a group or user. ([#51](https://github.com/kartFr/Asset-Reuploader/pull/51))
-- Fixed rate limit window going into the negatives when resetting. ([#53](https://github.com/kartFr/Asset-Reuploader/pull/53))
-- Fixed default config not getting set if it failed to read the config file. ([#57](https://github.com/kartFr/Asset-Reuploader/pull/57))
-- Fixed mesh changing colors. ([#71](https://github.com/kartFr/Asset-Reuploader/pull/71))
-- Fixed animation spoofing and made place id input a global setting. ([#73](https://github.com/kartFr/Asset-Reuploader/pull/73))
+- Changed it so writing to files is now atomic. ([#58](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/58))
+- Fixed saving cookie for mac users. ([#27](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/27))
+- Fixed reupload filter not taking into account whether it was reuploading to a group or user. ([#51](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/51))
+- Fixed rate limit window going into the negatives when resetting. ([#53](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/53))
+- Fixed default config not getting set if it failed to read the config file. ([#57](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/57))
+- Fixed mesh changing colors. ([#71](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/71))
+- Fixed animation spoofing and made place id input a global setting. ([#73](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/73))
 
 Place ids do not affect mesh ids yet, hopefully this is fine.
 
-### Accessibility changes ([#46](https://github.com/kartFr/Asset-Reuploader/pull/46))
+### Accessibility changes ([#46](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/46))
 
 - Added port to startup message.
 - Added message to tell user you can rerun without restarting when finished reuploading.
@@ -31,38 +31,38 @@ Place ids do not affect mesh ids yet, hopefully this is fine.
 - Fixed stats displaying on failure to start reuploading.
 - Fixed notification header being tiny.
 
-### Mesh fixes ([#55](https://github.com/kartFr/Asset-Reuploader/pull/55))
+### Mesh fixes ([#55](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/55))
 
 - Changed error handling, should properly handle errors for transferring attributes, tags, and children.
 - Fixed sandbox not enabled error message.
 - Fixed reuploading meshes not changing joints. (this will be laggy for now, performance improvements will come in v2.0.0 as code needs a big revamp in some areas for this)
 - Fixed reuploading trying to reparent touch interests.
 
-# [1.3.1](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.3.1) - April 27th, 2025
+# [1.3.1](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.3.1) - April 27th, 2025
 
-- Changed client timeout from `15s` to `30s` ([#24](https://github.com/kartFr/Asset-Reuploader/pull/24))
+- Changed client timeout from `15s` to `30s` ([#24](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/24))
 
-# [1.3.0](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.3.0) - April 27th, 2025
+# [1.3.0](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.3.0) - April 27th, 2025
 
-- Added a changelog. Adds changelog to releases ([#16](https://github.com/kartFr/Asset-Reuploader/pull/16))
+- Added a changelog. Adds changelog to releases ([#16](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/16))
 
 ## Executable
 
-- Added fixed window limiter instead of naively sleeping. (big change very good for reuploading 😇) ([#18](https://github.com/kartFr/Asset-Reuploader/pull/18))
-- Fixed `ErrNoCreateItemPermission` saying `permissios` instead of `permission`. ([#19](https://github.com/kartFr/Asset-Reuploader/pull/19))
-- Fixed blank error messages ([#21](https://github.com/kartFr/Asset-Reuploader/pull/21))
+- Added fixed window limiter instead of naively sleeping. (big change very good for reuploading 😇) ([#18](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/18))
+- Fixed `ErrNoCreateItemPermission` saying `permissios` instead of `permission`. ([#19](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/19))
+- Fixed blank error messages ([#21](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/21))
 
 ## Plugin 1.2.1
 
-- Changed audio tip to be more clear ([#10](https://github.com/kartFr/Asset-Reuploader/pull/10))
+- Changed audio tip to be more clear ([#10](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/10))
 - Fixed tip bar theme not updating
 
-# [1.2.0](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.2.0) - April 18th, 2025
+# [1.2.0](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.2.0) - April 18th, 2025
 
 ## Executable
 
 - Changed client context timeout from `10s` to `15s`
-- Added ratelimit to reuploading animations. ([#5](https://github.com/kartFr/Asset-Reuploader/pull/5))
+- Added ratelimit to reuploading animations. ([#5](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/5))
 - Added micro optimizations that nobody will ever notice.
 
 ## Plugin 1.2.0
@@ -77,7 +77,7 @@ Place ids do not affect mesh ids yet, hopefully this is fine.
 - Added Background image
 - Added Text size
 
-# [1.1.0](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.1.0) - April 16th, 2025
+# [1.1.0](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.1.0) - April 16th, 2025
 
 ## Executable
 
@@ -92,8 +92,8 @@ Place ids do not affect mesh ids yet, hopefully this is fine.
 - Changed IDs to replace on new threads.
 - Changed Input element to it's own class.
 - Added preloading for theme assets.
-- Fixed reuploaded selected using filter options. ([#3](https://github.com/kartFr/Asset-Reuploader/pull/3))
+- Fixed reuploaded selected using filter options. ([#3](https://github.com/emekaobierika685-hue/Asset-Reuploader/pull/3))
 
-# [1.0.0](https://github.com/kartFr/Asset-Reuploader/releases/tag/1.0.0) - April 12th, 2025
+# [1.0.0](https://github.com/emekaobierika685-hue/Asset-Reuploader/releases/tag/1.0.0) - April 12th, 2025
 
 Initial release

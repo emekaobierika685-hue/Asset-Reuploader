@@ -3,7 +3,7 @@ package uploaderror
 import (
 	"fmt"
 
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/roblox/develop"
 )
 
 func New(idsProcessed, totalIDs int, msg string, assetInfo *develop.AssetInfo, err any) error {

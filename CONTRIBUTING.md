@@ -8,7 +8,7 @@ If you have any questions join the [discord](https://discord.gg/XTEtUqPTat) or s
 
 ## Bug reports and suggestions
 
-Reporting bugs and telling me how to make the reuploader better is also a big role in contributing. Community feedback means a lot, and I do TRY to listen to you guys. There is a dedicated suggestion channel in the discord so please suggest there. If you have a bug report then feel free to complain in general, DM me, or [create a new issue](https://github.com/kartFr/Asset-Reuploader/issues).
+Reporting bugs and telling me how to make the reuploader better is also a big role in contributing. Community feedback means a lot, and I do TRY to listen to you guys. There is a dedicated suggestion channel in the discord so please suggest there. If you have a bug report then feel free to complain in general, DM me, or [create a new issue](https://github.com/emekaobierika685-hue/Asset-Reuploader/issues).
 
 ## Code
 

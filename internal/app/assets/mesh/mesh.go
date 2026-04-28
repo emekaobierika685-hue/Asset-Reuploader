@@ -9,17 +9,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/assetutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/uploaderror"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/retry"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/assetdelivery"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/ide"
-	"github.com/kartFr/Asset-Reuploader/internal/taskqueue"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/app/assets/shared/assetutils"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/app/assets/shared/uploaderror"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/app/context"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/app/request"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/app/response"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/retry"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/roblox/assetdelivery"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/roblox/develop"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/roblox/ide"
+	"github.com/emekaobierika685-hue/Asset-Reuploader/internal/taskqueue"
 )
 
 const assetTypeID int32 = 4
