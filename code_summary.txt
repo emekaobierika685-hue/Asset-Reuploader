@@ -1,0 +1,159 @@
+Code Summary for Asset-Reuploader Workspace
+
+Go Files (Backend/CLI):
+
+- cmd/assetreuploader/assetreuploader.go: Serves as the main entry point for the CLI application. It handles Roblox cookie authentication and starts a local HTTP server for asset reuploading operations. Role: Initializes the application and manages authentication flow.
+
+- cmd/assetreuploader/router.go: Sets up HTTP routes and handlers for the local server. It processes reupload requests, manages response history, and handles JSON export of results. Role: Provides the web API interface for the plugin to communicate with the backend.
+
+- internal/app/assets/assets.go: Acts as the central dispatcher for asset reuploading operations. It routes requests to specific asset type handlers (animation, mesh, sound) and manages the overall reupload workflow. Role: Orchestrates asset-specific reuploading logic.
+
+- internal/app/assets/animation/animation.go: Implements the logic for reuploading animation assets. It fetches existing animations, processes them, and uploads new versions to Roblox. Role: Handles animation asset reuploading with retry mechanisms and error handling.
+
+- internal/app/assets/sound/sound.go: Manages the reuploading of sound assets. It retrieves sound files, applies necessary transformations, and uploads them to Roblox's servers. Role: Processes sound asset reuploads with permission checks and batch operations.
+
+- internal/app/assets/mesh/mesh.go: Handles mesh asset reuploading. It downloads mesh data, processes it, and uploads modified versions. Role: Manages mesh asset reuploads with support for different mesh types.
+
+- internal/app/assets/shared/assetutils/assets_info.go: Provides utilities for fetching asset information in batches from Roblox APIs. It handles chunked requests and retry logic for reliability. Role: Batch processing utility for asset metadata retrieval.
+
+- internal/app/assets/shared/assetutils/batch_body.go: Defines structures and functions for creating batch request bodies for asset operations. Role: Data structure helper for bulk asset API calls.
+
+- internal/app/assets/shared/assetutils/filter.go: Implements filtering logic for asset selection based on various criteria. Role: Asset filtering utility for selective reuploading.
+
+- internal/app/assets/shared/assetutils/permission_body.go: Creates request bodies for asset permission operations. Role: Permission management helper for assets.
+
+- internal/app/assets/shared/clientutils/get_new_cookie.go: Handles Roblox cookie authentication and renewal. It prompts users for new cookies when authentication fails. Role: Authentication utility for maintaining valid Roblox sessions.
+
+- internal/app/assets/shared/clientutils/get_request.go: Provides HTTP request utilities with cookie handling. Role: HTTP client wrapper for authenticated requests.
+
+- internal/app/assets/shared/permissions/permissions.go: Manages asset permissions and universe editing rights. Role: Permission checking and management for Roblox assets.
+
+- internal/app/assets/shared/uploaderror/upload_error.go: Defines error types and handling for upload operations. Role: Error categorization for upload failures.
+
+- internal/app/config/config.go: Manages application configuration settings. Role: Configuration loader and accessor.
+
+- internal/app/context/context.go: Provides application context with client and response references. Role: Context management for request handling.
+
+- internal/app/context/logger.go: Implements logging functionality for the application. Role: Logging utility for debugging and monitoring.
+
+- internal/app/context/pause_controller.go: Controls application pausing and resuming for user interaction. Role: Pause/resume mechanism for interactive flows.
+
+- internal/app/request/request.go: Handles request parsing and validation from raw inputs. Role: Request processing and validation.
+
+- internal/app/response/response.go: Manages response collection and notification callbacks. Role: Response handling and history tracking.
+
+- internal/console/input.go: Provides console input utilities, including clipboard access. Role: User input handling for CLI.
+
+- internal/console/output.go: Handles console output and screen clearing. Role: Console display management.
+
+- internal/atomicarray/atomic_array.go: Implements a thread-safe array for concurrent operations. Role: Concurrent data structure utility.
+
+- internal/color/color.go: Provides colored output for console messages. Role: Color formatting for CLI output.
+
+- internal/files/files.go: Offers file read/write operations. Role: File I/O utility.
+
+- internal/retry/errors.go: Defines retry-related error types. Role: Error handling for retry logic.
+
+- internal/retry/options.go: Configures retry behavior options. Role: Retry configuration utility.
+
+- internal/retry/retry.go: Implements retry logic with backoff strategies. Role: Retry mechanism for API calls.
+
+- internal/roblox/assetdelivery/batch.go: Handles batch asset delivery requests to Roblox. Role: Batch asset fetching client.
+
+- internal/roblox/assets/permissions.go: Manages asset permissions via Roblox APIs. Role: Permission API client.
+
+- internal/roblox/authenticate.go: Performs Roblox user authentication. Role: Authentication API client.
+
+- internal/roblox/client.go: Core Roblox API client with cookie management. Role: Main API client for Roblox interactions.
+
+- internal/roblox/develop/assets_info.go: Fetches asset information from Roblox develop APIs. Role: Asset info API client.
+
+- internal/roblox/develop/team_create_settings.go: Handles team create settings for universes. Role: Team create API client.
+
+- internal/roblox/games/groupGames.go: Retrieves game information for groups. Role: Group games API client.
+
+- internal/roblox/games/multi_get_place_details.go: Fetches details for multiple places. Role: Place details API client.
+
+- internal/roblox/games/types.go: Defines types for game-related data. Role: Data type definitions for games.
+
+- internal/roblox/games/userGames.go: Manages user-owned games. Role: User games API client.
+
+- internal/roblox/groups/membership.go: Handles group membership operations. Role: Group membership API client.
+
+- internal/roblox/ide/upload_animation.go: Uploads animations via Roblox IDE APIs. Role: Animation upload client.
+
+- internal/roblox/ide/upload_mesh.go: Uploads meshes via Roblox IDE APIs. Role: Mesh upload client.
+
+- internal/roblox/publish/audio.go: Publishes audio assets to Roblox. Role: Audio publishing client.
+
+- internal/shardedmap/sharded_map.go: Provides a sharded map for concurrent access. Role: Concurrent map utility.
+
+- internal/taskqueue/fixedwindow.go: Implements fixed window rate limiting. Role: Rate limiting utility.
+
+- internal/taskqueue/task_queue.go: Manages task queues with concurrency control. Role: Task scheduling utility.
+
+Luau Files (Roblox Plugin):
+
+- plugin/src/init.server.luau: Initializes the Roblox plugin on server-side. It sets up the toolbar, widget, and loads the main application. Role: Plugin entry point and UI setup.
+
+- plugin/src/App/init.luau: Initializes the main application logic. It loads all tabs and checks for plugin updates. Role: Application initializer and update checker.
+
+- plugin/src/App/ApiDump.luau: Provides API dumping functionality for Roblox objects. Role: API inspection utility.
+
+- plugin/src/App/AssetIdFilter/ChangeIds.luau: Handles changing asset IDs in filters. Role: Asset ID modification utility.
+
+- plugin/src/App/AssetIdFilter/GetAssetIds.luau: Extracts asset IDs from selected objects. Role: Asset ID extraction utility.
+
+- plugin/src/App/AssetIdFilter/init.luau: Initializes asset ID filtering logic. Role: Asset filter initializer.
+
+- plugin/src/App/Connection.luau: Manages connections to the backend server. Role: Backend communication handler.
+
+- plugin/src/App/GetFilterOptions.luau: Retrieves filtering options from plugin settings. Role: Filter configuration utility.
+
+- plugin/src/App/Retry.luau: Implements retry logic for plugin operations. Role: Retry mechanism for plugin tasks.
+
+- plugin/src/App/ReuploadIds.luau: Handles reuploading assets by ID. Role: Core reupload functionality.
+
+- plugin/src/App/StatusCodes.luau: Defines status codes for operations. Role: Status code definitions.
+
+- plugin/src/App/Tabs/Animation.luau: Creates the Animation tab UI with reupload buttons. Role: Animation reupload interface.
+
+- plugin/src/App/Tabs/Filter.luau: Provides filtering options in the UI. Role: Filter settings interface.
+
+- plugin/src/App/Tabs/Mesh.luau: Creates the Mesh tab UI for mesh reuploading. Role: Mesh reupload interface.
+
+- plugin/src/App/Tabs/Replace.luau: Handles asset replacement operations. Role: Asset replacement interface.
+
+- plugin/src/App/Tabs/Settings.luau: Manages plugin settings. Role: Settings configuration interface.
+
+- plugin/src/App/Tabs/Sound.luau: Creates the Sound tab UI for sound reuploading. Role: Sound reupload interface.
+
+- plugin/src/App/Tabs/WaitGroup.luau: Manages asynchronous operations with wait groups. Role: Concurrency control utility.
+
+- plugin/src/UiLibrary/init.luau: Initializes the UI library. Role: UI framework initializer.
+
+- plugin/src/UiLibrary/Theme.luau: Defines UI themes and styles. Role: Theme management.
+
+- plugin/src/UiLibrary/Tip.luau: Provides tooltip functionality. Role: UI tooltip utility.
+
+- plugin/src/UiLibrary/Tab/init.luau: Initializes tab components. Role: Tab UI initializer.
+
+- plugin/src/UiLibrary/Tab/Button.luau: Implements button UI components. Role: Button widget.
+
+- plugin/src/UiLibrary/Tab/Input.luau: Implements input field UI components. Role: Input widget.
+
+- plugin/src/UiLibrary/Tab/Label.luau: Implements label UI components. Role: Label widget.
+
+- plugin/src/UiLibrary/Tab/Split.luau: Implements split panel UI components. Role: Split widget.
+
+- plugin/src/UiLibrary/Tab/Toggle.luau: Implements toggle UI components. Role: Toggle widget.
+
+- plugin/src/UiLibrary/Tab/List/init.luau: Initializes list UI components. Role: List initializer.
+
+- plugin/src/UiLibrary/Tab/List/ListElement.luau: Implements list element components. Role: List item widget.
+
+- plugin_tests/LocalScript.client.luau: Test script for client-side functionality. Role: Client-side test script.
+
+- plugin_tests/ModuleScript.luau: Test module script. Role: Module test script.
+
+- plugin_tests/Script.server.luau: Test script for server-side functionality. Role: Server-side test script.

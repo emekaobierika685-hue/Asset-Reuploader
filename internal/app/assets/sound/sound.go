@@ -23,7 +23,7 @@ import (
 	"github.com/kartFr/Asset-Reuploader/internal/roblox/assets"
 	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
 	"github.com/kartFr/Asset-Reuploader/internal/roblox/games"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/publish"
+	"github.com/kartFr/Asset-Reuploader/internal/roblox/ide"
 	"github.com/kartFr/Asset-Reuploader/internal/shardedmap"
 	"github.com/kartFr/Asset-Reuploader/internal/taskqueue"
 )
@@ -150,7 +150,7 @@ func Reupload(ctx *context.Context, r *request.Request) {
 			return
 		}
 
-		uploadHandler, err := publish.NewUploadAudioHandler(client, assetInfo.Name, assetData, groupID)
+		uploadHandler, err := ide.NewUploadSoundHandler(client, assetInfo.Name, "", assetData, groupID)
 		if err != nil {
 			newUploadError("Failed to get upload handler", assetInfo, err)
 			return
@@ -165,17 +165,15 @@ func Reupload(ctx *context.Context, r *request.Request) {
 						uploadQueue.Limiter.Wait()
 					}
 
-					uploadResponse, err := uploadHandler()
+					id, err := uploadHandler()
 					if err == nil {
-						return uploadResponse.ID, nil
+						return id, nil
 					}
 
 					switch err {
-					case publish.UploadAudioErrors.ErrNotAuthenticated:
+					case ide.UploadSoundErrors.ErrNotLoggedIn:
 						clientutils.GetNewCookie(ctx, r, "cookie expired")
-					case publish.UploadAudioErrors.ErrQuotaExceeded:
-						clientutils.GetNewCookie(ctx, r, "audio limit exceeded")
-					case publish.UploadAudioErrors.ErrModerated:
+					case ide.UploadSoundErrors.ErrInappropriateName:
 						assetInfo.Name = fmt.Sprintf("(%s) [Censored]", assetInfo.Name)
 					default:
 						switch err.(type) {

@@ -1,0 +1,96 @@
+Security Scan Report for Asset-Reuploader Workspace
+Scanned on: April 28, 2026
+
+Summary: No malware, viruses, trojans, backdoors, or suspicious patterns detected in any .go or .luau files.
+
+Detailed Results:
+
+Go Files:
+- /workspaces/Asset-Reuploader/internal/color/color.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/uploaderror/upload_error.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/clientutils/get_request.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/clientutils/get_new_cookie.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/assetutils/permission_body.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/assetutils/filter.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/assetutils/batch_body.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/assetutils/assets_info.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/shared/permissions/permissions.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/assets.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/animation/animation.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/sound/sound.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/assets/mesh/mesh.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/response/response.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/context/pause_controller.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/context/context.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/context/logger.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/config/config.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/app/request/request.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/console/output.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/console/input.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/atomicarray/atomic_array.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/files/files.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/retry/errors.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/retry/options.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/retry/retry.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/authenticate.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/client.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/assetdelivery/batch.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/assets/permissions.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/develop/assets_info.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/develop/team_create_settings.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/games/groupGames.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/games/multi_get_place_details.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/games/types.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/games/userGames.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/groups/membership.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/ide/upload_animation.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/ide/upload_mesh.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/roblox/publish/audio.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/shardedmap/sharded_map.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/taskqueue/fixedwindow.go: No threats detected
+- /workspaces/Asset-Reuploader/internal/taskqueue/task_queue.go: No threats detected
+- /workspaces/Asset-Reuploader/cmd/assetreuploader/assetreuploader.go: No threats detected
+- /workspaces/Asset-Reuploader/cmd/assetreuploader/router.go: No threats detected
+
+Luau Files:
+- /workspaces/Asset-Reuploader/plugin/src/init.server.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Tabs/Mesh.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Tabs/Animation.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Tabs/Settings.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Tabs/Replace.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Tabs/Sound.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Tabs/Filter.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/ApiDump.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/WaitGroup.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Connection.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/GetFilterOptions.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/AssetIdFilter/ChangeIds.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/AssetIdFilter/GetAssetIds.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/AssetIdFilter/init.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/ReuploadIds.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/init.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/StatusCodes.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/App/Retry.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/Label.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/Split.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/Button.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/Input.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/Toggle.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/init.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/init.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/init.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Theme.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tip.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/List.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/Button.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/Label.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/Split.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/Toggle.luau: No threats detected
+- /workspaces/Asset-Reuploader/plugin/src/UiLibrary/Tab/List/Input.luau: No threats detected
+
+Notes:
+- Some Go files use exec.Command for console operations (clear screen, clipboard access), which are benign.
+- HTTP requests are to official Roblox APIs for asset management.
+- Base64 and XOR are used for data encoding in uploads, not obfuscation.
+- No signs of reverse shells, data exfiltration, persistence mechanisms, privilege escalation, or keyloggers.
+- Luau files are Roblox plugin scripts with no malicious patterns.
