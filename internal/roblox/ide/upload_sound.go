@@ -39,11 +39,13 @@ type uploadSoundResponse struct {
 	} `json:"errors,omitempty"`
 }
 
-func newUploadSoundRequest(name string, data *bytes.Buffer, groupID int64) (*http.Request, error) {
+func buildSoundJSON(name string, data *bytes.Buffer, groupID int64) ([]byte, error) {
 	var buffer bytes.Buffer
 	encoder := base64.NewEncoder(base64.StdEncoding, &buffer)
 	size := int64(data.Len())
-	if _, err := io.Copy(encoder, data); err != nil {
+	dataCopy := make([]byte, data.Len())
+	copy(dataCopy, data.Bytes())
+	if _, err := io.Copy(encoder, bytes.NewReader(dataCopy)); err != nil {
 		return nil, err
 	}
 	if err := encoder.Close(); err != nil {
@@ -57,19 +59,7 @@ func newUploadSoundRequest(name string, data *bytes.Buffer, groupID int64) (*htt
 		GroupID:           groupID,
 	}
 
-	jsonBody, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("POST", "https://publish.roblox.com/v1/audio", bytes.NewReader(jsonBody))
-	if err != nil {
-		return nil, err
-	}
-	req.Header.Set("User-Agent", "RobloxStudio/WinInet")
-	req.Header.Set("Content-Type", "application/json")
-
-	return req, nil
+	return json.Marshal(body)
 }
 
 func NewUploadSoundHandler(
@@ -84,12 +74,20 @@ func NewUploadSoundHandler(
 		group = groupID[0]
 	}
 
-	req, err := newUploadSoundRequest(name, data, group)
-	if err != nil {
-		return func() (int64, error) { return 0, nil }, err
-	}
+	currentName := name
 
 	return func() (int64, error) {
+		jsonBody, err := buildSoundJSON(currentName, data, group)
+		if err != nil {
+			return 0, err
+		}
+
+		req, err := http.NewRequest("POST", "https://publish.roblox.com/v1/audio", bytes.NewReader(jsonBody))
+		if err != nil {
+			return 0, err
+		}
+		req.Header.Set("User-Agent", "RobloxStudio/WinInet")
+		req.Header.Set("Content-Type", "application/json")
 		req.AddCookie(&http.Cookie{
 			Name:  ".ROBLOSECURITY",
 			Value: c.Cookie,
@@ -102,35 +100,40 @@ func NewUploadSoundHandler(
 		}
 		defer resp.Body.Close()
 
+		bodyBytes, err := io.ReadAll(resp.Body)
+		if err != nil {
+			return 0, err
+		}
+
 		var response uploadSoundResponse
-		json.NewDecoder(resp.Body).Decode(&response)
+		json.Unmarshal(bodyBytes, &response)
 
 		switch resp.StatusCode {
 		case http.StatusOK:
 			return response.ID, nil
 		case http.StatusBadRequest:
-			if response.Errors == nil {
-				return 0, errors.New(resp.Status)
+			if len(response.Errors) > 0 {
+				message := response.Errors[0].Message
+				if message == "Audio name or description is moderated." {
+					currentName = "[Censored]"
+					return 0, UploadSoundErrors.ErrInappropriateName
+				}
+				return 0, errors.New(message)
 			}
-			message := response.Errors[0].Message
-			if message == "Audio name or description is moderated." {
-				req, _ = newUploadSoundRequest("[Censored]", data, group)
-				return 0, UploadSoundErrors.ErrInappropriateName
-			}
-			return 0, errors.New(message)
+			return 0, errors.New(string(bodyBytes))
 		case http.StatusUnauthorized:
-			if response.Errors == nil {
-				return 0, errors.New(resp.Status)
+			if len(response.Errors) > 0 {
+				return 0, errors.New(response.Errors[0].Message)
 			}
 			return 0, UploadSoundErrors.ErrNotLoggedIn
 		case http.StatusForbidden:
 			c.SetToken(resp.Header.Get("x-csrf-token"))
 			return 0, UploadSoundErrors.ErrTokenInvalid
 		default:
-			if response.Errors != nil {
+			if len(response.Errors) > 0 {
 				return 0, errors.New(response.Errors[0].Message)
 			}
-			return 0, errors.New(resp.Status)
+			return 0, errors.New(string(bodyBytes))
 		}
 	}, nil
 }
